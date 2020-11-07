@@ -53,3 +53,19 @@ f.write('\n1,1,1,1')
 f.close()
 print("\norig1 = \n", str(orig1))
 
+print("\nCONTEXT MANAGEMENT IN PYTHON")
+
+print("""
+In python the with statement is how a context is entered.  and exited. The
+syntax for this statement introduces the \033[91m with \033[0;0m Python keyword
+and reuses the \033[91m as \033[0;0m keyword.""")
+
+print("""
+with <context-manager< as <var>:
+    <with-block>""")
+
+print("""
+So in the above example the open() function is the context-manager and f is the
+variable which is used for doing the context management. Using a context manager
+is recommended because it means you don't have to remember to close the file
+you are editing.""")
