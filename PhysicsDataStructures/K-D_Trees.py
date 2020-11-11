@@ -91,22 +91,35 @@ class Node(object):
         if not isleaf:
             s = "[" + s + ":"
         if self.left is not None:
-            s += "\n left " + "\n ".join(repr(self.left).split('\n'))
+            s += "\n left = " + "\n ".join(repr(self.left).split('\n'))
         if self.right is not None:
-            s += "\n right " + "\n ".join(repr(self.right).split('\n'))
+            s += "\n right = " + "\n ".join(repr(self.right).split('\n'))
         if not isleaf:
             s += "\n ]"
-        return s
+        return s 
 
 def kdtree(points, depth=0):
     if len(points) == 0:
         return None
     k = len(points[0])
     a = depth % k
-    points = sorted(points, key=lambda x: x[a]) # need to revise lambdas
-    # and how to doe sorting so will focus on sorting today.
+    points = sorted(points, key=lambda x: x[a])
     i = int(len(points) / 2)  # middle index, rounded down
-    node_left = kdtree(points[:i], depth + 1) # recursion example
+    node_left = kdtree(points[:i], depth + 1)
     node_right = kdtree(points[i+1:], depth + 1)
     node = Node(points[i], node_left, node_right)
     return node
+
+print("\nEXAMPLE")
+
+points = [(1, 2), (3, 2),
+            (5, 5), (2, 1),
+            (4, 3), (1, 5)]
+
+root = kdtree(points)
+print(root)
+
+from scipy.spatial import KDtree
+tree = KDTree(points)
+
+print(tree.data)
